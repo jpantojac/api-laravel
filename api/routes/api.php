@@ -27,3 +27,5 @@ Route::middleware('auth:api')->group( function () {
 Route::middleware('auth:api')->group( function () {
 	Route::resource('helicopters', 'API\HelicopterController');
 });
+	
+Route::get('/fac', 'API\HelicopterController@getGuzzleRequest');

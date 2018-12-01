@@ -86,4 +86,21 @@ class HelicopterController extends BaseController
         $Helicopter->delete();
         return $this->sendResponse($Helicopter->toArray(), 'Helicopter deleted successfully.');
     }
+
+    public function getGuzzleRequest()
+    {   
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://jsonplaceholder.typicode.com/users');
+        echo $res->getStatusCode();
+        //dd($res);
+        return $res->getBody();
+    /*$client = new \GuzzleHttp\Client();
+    $request = $client->get('https://jsonplaceholder.typicode.com/users');
+    $response = $request->getBody();
+    dd($response);*/
+    }
+
+    public function showMessage(){
+        echo "hello world!!";
+    }
 }
