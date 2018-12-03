@@ -29,3 +29,4 @@ Route::middleware('auth:api')->group( function () {
 });
 	
 Route::get('/fac', 'API\HelicopterController@getGuzzleRequest');
+Route::get('/getUser', 'API\HelicopterController@getUser');

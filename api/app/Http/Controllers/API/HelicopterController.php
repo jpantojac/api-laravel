@@ -89,18 +89,26 @@ class HelicopterController extends BaseController
 
     public function getGuzzleRequest()
     {   
+ 
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://jsonplaceholder.typicode.com/users');
-        echo $res->getStatusCode();
-        //dd($res);
+        
+        $stream = $res->getBody();
+        $contents = $stream->getContents();
+        // mostrar el username de 01 usuario
+        //$user=(json_decode($contents , true));
+        //print_r($user);
+        //echo $user[0]['username'];
+        //
         return $res->getBody();
-    /*$client = new \GuzzleHttp\Client();
-    $request = $client->get('https://jsonplaceholder.typicode.com/users');
-    $response = $request->getBody();
-    dd($response);*/
+
     }
 
-    public function showMessage(){
-        echo "hello world!!";
+    public function getUser(){
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://api.github.com/user', ['auth' => ['edwin.bocanegra@gmail.com', 'comando2205']]);
+        //echo $res->getStatusCode();
+        //echo $res->getHeader('content-type');
+        echo $res->getBody();
     }
 }

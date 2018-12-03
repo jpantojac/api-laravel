@@ -14,6 +14,7 @@ class ProductController extends BaseController
     public function index()
     {
         $products = Product::all();
+        //echo getType($products);
         return $this->sendResponse($products->toArray(), 'Products retrieved successfully.');
     }
     /**
